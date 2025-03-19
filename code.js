@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "G",
+  testo: "X",
 
   dimensione: 0.8,
   interlinea: 0.7,
