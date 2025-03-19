@@ -1,7 +1,7 @@
 export const configurazione = {
-  testo: "X",
+  testo: "A",
 
-  dimensione: 0.8,
+  dimensione: 0.5,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
@@ -77,7 +77,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background(200, 0, 0);
 
   // [INFO] Rimuovi il commento per disegnare il testo
   fill("white");
