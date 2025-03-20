@@ -4,12 +4,12 @@ export const configurazione = {
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
-  percorsoFont: "./assets/bodoni_[allfont.net].ttf",
+  percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 10,
-  densitàPuntiBase: 0.5,
+  sensibilitàMicrofonoBase: 1,
+  densitàPuntiBase: 1,
 
-  nascondiInterfaccia: true,
+  nascondiInterfaccia: false,
 };
 
 /**
@@ -42,11 +42,13 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const dimensioneIngrandita =
-    30 + Math.sin(frameCount * 50 + indice - y * 2) * 50; // Effetto di ingrandimento
-  fill(255); // Riempimento bianco con opacità
-  noStroke();
-  ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
+  push();
+  translate(x, y);
+  rotate(frameCount * 20 + indice * 10);
+  ellipse(20, 0, 20, 20);
+  pop();
+
+  rect(x, y, 20, 20);
 }
 
 /**
@@ -70,11 +72,11 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background(0, 255, 0); // Sfondo nero
+  background("deeppink");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  // fill(255); // Testo bianco
-  // disegnaTesto();
+  fill("white");
+  disegnaTesto();
 }
 
 /**
@@ -83,20 +85,6 @@ export function sotto(disegnaTesto) {
  */
 export function sopra(disegnaTesto) {
   // [INFO] Rimuovi il commento per disegnare il testo
-  // fill(0); // Colore del testo nero
+  // fill("black");
   // disegnaTesto();
-}
-
-/**
- * Funzione per disegnare il testo con animazione
- */
-export function disegnaTesto() {
-  push();
-  textSize(100); // Dimensione del testo
-  textAlign(CENTER, CENTER);
-  textFont(configurazione.percorsoFont); // Carica il font personalizzato
-  fill(255); // Testo bianco
-  const offset = Math.sin(frameCount * 0.05) * 5; // Effetto di movimento dolce
-  text(configurazione.testo, width / 2, height / 2 + offset); // Disegna il testo animato
-  pop();
 }

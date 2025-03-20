@@ -4,7 +4,7 @@ export const configurazione = {
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
-  percorsoFont: "./assets/bodoni_[allfont.net].ttf",
+  percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
   sensibilitàMicrofonoBase: 10,
   densitàPuntiBase: 0.5,
@@ -42,9 +42,8 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const dimensioneIngrandita =
-    30 + Math.sin(frameCount * 50 + indice - y * 2) * 50; // Effetto di ingrandimento
-  fill(255); // Riempimento bianco con opacità
+  const dimensioneIngrandita = 10 + Math.sin(frameCount * 0.05) * 100; // Effetto di ingrandimento
+  fill(255, 255, 255, 150); // Riempimento bianco con opacità
   noStroke();
   ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
 }
@@ -70,11 +69,14 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background(0, 255, 0); // Sfondo nero
+  background(0); // Sfondo nero
+
+  // Disegnare prima i punti
+  disegnaPunti(); // Aggiungi la funzione che disegna i punti
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  // fill(255); // Testo bianco
-  // disegnaTesto();
+  fill(255); // Testo bianco
+  disegnaTesto(); // Disegna il testo dopo i punti
 }
 
 /**
@@ -83,8 +85,8 @@ export function sotto(disegnaTesto) {
  */
 export function sopra(disegnaTesto) {
   // [INFO] Rimuovi il commento per disegnare il testo
-  // fill(0); // Colore del testo nero
-  // disegnaTesto();
+  fill(0); // Colore del testo nero
+  disegnaTesto();
 }
 
 /**
@@ -97,6 +99,26 @@ export function disegnaTesto() {
   textFont(configurazione.percorsoFont); // Carica il font personalizzato
   fill(255); // Testo bianco
   const offset = Math.sin(frameCount * 0.05) * 5; // Effetto di movimento dolce
-  text(configurazione.testo, width / 2, height / 2 + offset); // Disegna il testo animato
+  text(configurazione.testo, width / 2, height / 1.5 + offset); // Modifica la posizione y per metterlo sotto i cerchi
   pop();
+}
+
+/**
+ * Disegna i punti
+ */
+function disegnaPunti() {
+  // Puoi aggiungere qui la logica per disegnare i punti, come nel codice originale
+  for (let i = 0; i < 10; i++) {
+    let x = random(width);
+    let y = random(height);
+    disegnaPunto({
+      x,
+      y,
+      angolo: 0,
+      indice: i,
+      unita: 1,
+      volume: 0,
+      frameCount: frameCount,
+    });
+  }
 }

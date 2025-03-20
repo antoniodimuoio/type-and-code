@@ -1,10 +1,10 @@
 export const configurazione = {
-  testo: "S",
+  testo: "SPYPE",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
-  percorsoFont: "./assets/bodoni_[allfont.net].ttf",
+  percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
   sensibilitàMicrofonoBase: 10,
   densitàPuntiBase: 0.5,
@@ -42,9 +42,8 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const dimensioneIngrandita =
-    30 + Math.sin(frameCount * 50 + indice - y * 2) * 50; // Effetto di ingrandimento
-  fill(255); // Riempimento bianco con opacità
+  const dimensioneIngrandita = 30 + Math.sin(frameCount * 500 + indice) * 70; // Effetto di ingrandimento
+  fill(100, 0, 0); // Riempimento bianco con opacità
   noStroke();
   ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
 }
@@ -70,7 +69,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background(0, 255, 0); // Sfondo nero
+  background(255, 0, 0); // Sfondo nero
 
   // [INFO] Rimuovi il commento per disegnare il testo
   // fill(255); // Testo bianco
