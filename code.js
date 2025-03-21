@@ -46,10 +46,11 @@ export function disegnaPunto({
 }) {
   push();
   translate(x, y);
-
   stroke("red");
-  fill("red");
-  line(0, 0, gamma, 0);
+
+  let b = map(beta, -90, 90, -unita, unita);
+  let g = map(gamma, -90, 90, unita, -unita);
+  line(0, 0, g, b);
   pop();
 
   // fill("red");
