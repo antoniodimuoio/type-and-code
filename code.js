@@ -9,7 +9,7 @@ export const configurazione = {
   sensibilitàMicrofonoBase: 80,
   densitàPuntiBase: 0.5,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -44,13 +44,16 @@ export function disegnaPunto({
   gamma = 0,
   sensibilita,
 }) {
-  console.log(sensibilita);
-  const dimensioneIngrandita =
-    unita / 10 +
-    Math.sin(frameCount * 0.05 + indice) * unita * map(volume, 0, 1, 1, 1.5); // Effetto di ingrandimento
-  fill(255, 0, 0); // Riempimento bianco con opacità
-  noStroke();
-  ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
+  push();
+  translate(x, y);
+
+  stroke("red");
+  fill("red");
+  line(0, 0, gamma, 0);
+  pop();
+
+  // fill("red");
+  // rect(x, y, 10);
 }
 
 /**
