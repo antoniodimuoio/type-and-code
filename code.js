@@ -6,10 +6,10 @@ export const configurazione = {
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 10,
+  sensibilitàMicrofonoBase: 20,
   densitàPuntiBase: 0.5,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -27,6 +27,7 @@ export const configurazione = {
  * @property {number} [alpha] - Device orientation alpha angle (z-axis rotation) - Varia da 0 a 360
  * @property {number} [beta] - Device orientation beta angle (front-to-back tilt) - Varia da -90 a 90
  * @property {number} [gamma] - Device orientation gamma angle (left-to-right tilt) - Varia da -90 a 90
+ * @property {number} [sensibilita] - Sensibilità del microfono
  *
  * @param {Ingredienti} ingredienti
  */
@@ -41,8 +42,12 @@ export function disegnaPunto({
   alpha = 0,
   beta = 0,
   gamma = 0,
+  sensibilita,
 }) {
-  const dimensioneIngrandita = 10 + Math.sin(frameCount * 0.05 + indice) * 100; // Effetto di ingrandimento
+  console.log(sensibilita);
+  const dimensioneIngrandita =
+    unita / 10 +
+    Math.sin(frameCount * 0.05 + indice) * unita * map(volume, 0, 1, 1, 1.5); // Effetto di ingrandimento
   fill(255, 0, 0); // Riempimento bianco con opacità
   noStroke();
   ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
@@ -82,7 +87,7 @@ export function sotto(disegnaTesto) {
  */
 export function sopra(disegnaTesto) {
   // [INFO] Rimuovi il commento per disegnare il testo
-  // fill(0); // Colore del testo nero
+  // fill("red"); // Colore del testo nero
   // disegnaTesto();
 }
 

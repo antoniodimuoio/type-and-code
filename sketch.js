@@ -102,6 +102,7 @@ function draw() {
       beta: orientationData.beta,
       gamma: orientationData.gamma,
       frameCount,
+      sensibilita: audioController.sensitivity,
     })
   );
 

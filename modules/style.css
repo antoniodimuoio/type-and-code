@@ -5,6 +5,8 @@ body {
 
   font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Ubuntu Mono",
     "Roboto Mono", Menlo, Monaco, "Courier New", monospace;
+
+  background-color: black;
 }
 canvas {
   display: block;
