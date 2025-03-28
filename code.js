@@ -94,6 +94,7 @@ export function sopra(disegnaTesto) {
 /**
  * Funzione per disegnare il testo con animazione
  */
+
 export function disegnaTesto() {
   push();
   textSize(100); // Dimensione del testo
