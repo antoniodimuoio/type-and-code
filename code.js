@@ -1,12 +1,12 @@
 export const configurazione = {
-  testo: "ADM",
+  testo: "S",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 80,
+  sensibilitàMicrofonoBase: 70,
   densitàPuntiBase: 0.5,
 
   nascondiInterfaccia: false,
@@ -44,17 +44,13 @@ export function disegnaPunto({
   gamma = 0,
   sensibilita,
 }) {
-  push();
-  translate(x, y);
-  stroke("red");
-
-  let b = map(beta, -90, 90, -unita, unita);
-  let g = map(gamma, -90, 90, unita, -unita);
-  line(0, 0, g, b);
-  pop();
-
-  // fill("red");
-  // rect(x, y, 10);
+  console.log(sensibilita);
+  const dimensioneIngrandita =
+    unita / 10 +
+    Math.sin(frameCount * 0.05 + indice) * unita * map(volume, 0, 1, 1, 1.5); // Effetto di ingrandimento
+  fill(255, 0, 0); // Riempimento bianco con opacità
+  noStroke();
+  ellipse(x, y, dimensioneIngrandita, dimensioneIngrandita); // Disegna il punto con effetto di ingrandimento
 }
 
 /**
